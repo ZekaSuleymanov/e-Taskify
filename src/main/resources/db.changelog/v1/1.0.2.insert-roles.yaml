@@ -1,0 +1,65 @@
+databaseChangeLog:
+  - changeSet:
+      author: srthealik
+      id: 1714043878889-1.0.2.1
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - insert:
+            tableName: table_detail
+            columns:
+              - column:
+                  name: id
+                  value: "1"
+              - column:
+                  name: created_at
+                  value: "now()"
+              - column:
+                  name: updated_at
+                  value: "now()"
+              - column:
+                  name: status
+                  value: "true"
+        - insert:
+            tableName: table_detail
+            columns:
+              - column:
+                  name: id
+                  value: "2"
+              - column:
+                  name: created_at
+                  value: "now()"
+              - column:
+                  name: updated_at
+                  value: "now()"
+              - column:
+                  name: status
+                  value: "true"
+  - changeSet:
+      author: srthealik
+      id: 1714043878889-1.0.2.2
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: name
+                  value: ROLE_USER
+              - column:
+                  name: id
+                  value: "1"
+              - column:
+                  name: table_detail_id
+                  value: "1"
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: name
+                  value: ROLE_ADMIN
+              - column:
+                  name: id
+                  value: "2"
+              - column:
+                  name: table_detail_id
+                  value: "2"

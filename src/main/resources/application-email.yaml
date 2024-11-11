@@ -1,0 +1,15 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: eli.cabbarov2003@gmail.com
+    password: ckskyinwtblbbtod
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          ssl:
+            protocols: TLSv1.2
+          auth: true
+          starttls:
+            enable: tru

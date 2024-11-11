@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1714457018050-1
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: organization_id
+                  type: BIGINT
+            tableName: task
+  - changeSet:
+      id: 1714457018050-2
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: organization_id
+            baseTableName: task
+            constraintName: FK_TASK_ON_ORGANIZATION
+            referencedColumnNames: id
+            referencedTableName: organization

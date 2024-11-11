@@ -1,0 +1,339 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1714381627328-1
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: table_detail_seq
+            startValue: 150
+  - changeSet:
+      id: 1714381627328-2
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk__user
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: surname
+                  type: VARCHAR(255)
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: enabled
+                  type: BOOLEAN
+              - column:
+                  name: role_id
+                  type: BIGINT
+              - column:
+                  name: organization_id
+                  type: BIGINT
+              - column:
+                  name: table_detail_id
+                  type: BIGINT
+            tableName: _user
+  - changeSet:
+      id: 1714381627328-3
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_organization
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  name: address
+                  type: VARCHAR(255)
+              - column:
+                  name: table_detail_id
+                  type: BIGINT
+            tableName: organization
+  - changeSet:
+      id: 1714381627328-4
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_role
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: table_detail_id
+                  type: BIGINT
+            tableName: role
+  - changeSet:
+      id: 1714381627328-5
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_tabledetail
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: DATETIME
+              - column:
+                  name: updated_at
+                  type: DATETIME
+              - column:
+                  constraints:
+                    nullable: false
+                  name: status
+                  type: BOOLEAN
+            tableName: table_detail
+  - changeSet:
+      id: 1714381627328-6
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_task
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: dead_line
+                  type: DATE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: status
+                  type: BOOLEAN
+              - column:
+                  name: table_detail_id
+                  type: BIGINT
+            tableName: task
+  - changeSet:
+      id: 1714381627328-7
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: task_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: users_id
+                  type: BIGINT
+            tableName: task_users
+  - changeSet:
+      id: 1714381627328-8
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_token
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: expired
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: available
+                  type: BOOLEAN
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: token_type
+                  type: VARCHAR(255)
+              - column:
+                  name: table_detail_id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+            tableName: token
+  - changeSet:
+      id: 1714381627328-9
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: username
+            constraintName: uc__user_username
+            tableName: _user
+  - changeSet:
+      id: 1714381627328-10
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: table_detail_id
+            baseTableName: organization
+            constraintName: FK_ORGANIZATION_ON_TABLE_DETAIL
+            referencedColumnNames: id
+            referencedTableName: table_detail
+  - changeSet:
+      id: 1714381627328-11
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: table_detail_id
+            baseTableName: role
+            constraintName: FK_ROLE_ON_TABLE_DETAIL
+            referencedColumnNames: id
+            referencedTableName: table_detail
+  - changeSet:
+      id: 1714381627328-12
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: table_detail_id
+            baseTableName: task
+            constraintName: FK_TASK_ON_TABLE_DETAIL
+            referencedColumnNames: id
+            referencedTableName: table_detail
+  - changeSet:
+      id: 1714381627328-13
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: table_detail_id
+            baseTableName: token
+            constraintName: FK_TOKEN_ON_TABLE_DETAIL
+            referencedColumnNames: id
+            referencedTableName: table_detail
+  - changeSet:
+      id: 1714381627328-14
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: token
+            constraintName: FK_TOKEN_ON_USER
+            referencedColumnNames: id
+            referencedTableName: _user
+  - changeSet:
+      id: 1714381627328-15
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: organization_id
+            baseTableName: _user
+            constraintName: FK__USER_ON_ORGANIZATION
+            referencedColumnNames: id
+            referencedTableName: organization
+  - changeSet:
+      id: 1714381627328-16
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: _user
+            constraintName: FK__USER_ON_ROLE
+            referencedColumnNames: id
+            referencedTableName: role
+  - changeSet:
+      id: 1714381627328-17
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: table_detail_id
+            baseTableName: _user
+            constraintName: FK__USER_ON_TABLE_DETAIL
+            referencedColumnNames: id
+            referencedTableName: table_detail
+  - changeSet:
+      id: 1714381627328-18
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: task_id
+            baseTableName: task_users
+            constraintName: fk_tasuse_on_task
+            referencedColumnNames: id
+            referencedTableName: task
+  - changeSet:
+      id: 1714381627328-19
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: users_id
+            baseTableName: task_users
+            constraintName: fk_tasuse_on_user
+            referencedColumnNames: id
+            referencedTableName: _user

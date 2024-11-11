@@ -1,0 +1,6 @@
+app:
+  time:
+    token:
+      refresh: 1800000
+      confirmation: 1800000
+      access: 1800

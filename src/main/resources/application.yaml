@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: homemate
+  profiles:
+    include:
+      - email
+      - db
+      - cons
+  servlet:
+    multipart:
+      max-file-size: 100MB
+server:
+  port: 8088
+logging:
+  level:
+    web: trace
